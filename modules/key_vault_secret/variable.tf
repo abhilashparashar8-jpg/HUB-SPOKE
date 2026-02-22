@@ -1,0 +1,3 @@
+variable "kvs123" {
+    
+}
