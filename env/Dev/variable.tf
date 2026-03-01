@@ -37,3 +37,5 @@ variable "networkgateway" {
 }
 variable "vnetpeering" {
 }
+variable "logs"{
+}

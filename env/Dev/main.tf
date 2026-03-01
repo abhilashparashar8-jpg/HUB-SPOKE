@@ -58,7 +58,7 @@ module "keyvault" {
   keyvault = var.keyvault
 }
 module "kvs" {
-  depends_on       = [module.resourcegroup, module.subnet, module.SQLserver, module.vnet,module.keyvault]
+  depends_on       = [module.resourcegroup, module.subnet, module.SQLserver, module.vnet,module.keyvault,module.virtual_machine]
   source           = "../../modules/key_vault_secret"
   kvs123 = var.kvs123
 }
@@ -86,4 +86,9 @@ module "vnetpeering" {
    depends_on       = [module.resourcegroup, module.subnet, module.SQLserver, module.vnet,module.keyvault, module.NIC, module.NSG]
   source           = "../../modules/vnet_peering"
   vnetpeering = var.vnetpeering
+}
+module "logs" {
+   depends_on       = [module.resourcegroup, module.subnet, module.SQLserver, module.vnet,module.keyvault, module.NIC, module.NSG]
+  source           = "../../modules/log_analytics_workspace"
+  logs = var.logs
 }
